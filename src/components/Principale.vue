@@ -2,12 +2,12 @@
 
 <div class="container">
   <div id="navbar"> </div>
- 
-  <MyCards v-for="album in albums" 
-   :key="album.id"
-   :details="album" 
-   />
- 
+  <div class="container-cards">
+    <MyCards v-for="album in albums" 
+    :key="album.id"
+    :details="album" 
+    />
+  </div>
 </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
        axios
       .get(this.apiUrl)
       .then((result) => {
-        this.albums = result.data;
+        this.albums = result.data.response;
       }
       )}
     }
@@ -56,5 +56,16 @@ export default {
   background-color: #1e2d3b;
   width:100%;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.container-cards {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto;
 }
 </style>
