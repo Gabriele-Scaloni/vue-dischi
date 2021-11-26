@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     
-    <MyMain/>
+    <Principale/>
 
   </div>
 </template>
 
 <script>
 
-import MyMain from '@/components/MyMain.vue'
+import Principale from '@/components/Principale.vue'
 
 export default {
   name: 'App',
   components: {
-    MyMain,
+    Principale,
   }
 }
 </script>
