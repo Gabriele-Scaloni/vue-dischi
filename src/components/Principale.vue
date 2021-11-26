@@ -1,7 +1,8 @@
 <template>
 
 <div class="container">
-  <div id="navbar"> </div>
+  <div id="navbar"> <img id="logonav" src="https://www.logolynx.com/images/logolynx/51/51b63b09d988d4545d7e6db63cdb8cd8.png" alt="Logo spotify">
+   </div>
   <div class="container-cards">
     <MyCards v-for="album in albums" 
     :key="album.id"
@@ -49,8 +50,19 @@ export default {
 <style scoped lang="scss">
 #navbar {
   width:100%;
-  height: 50px;
-  background-color:#2e3a46 ;
+  height: 60px;
+  background-color:#2e3a46;
+}
+#navbar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#logonav {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin: 10px;
 }
 .container {
   background-color: #1e2d3b;
