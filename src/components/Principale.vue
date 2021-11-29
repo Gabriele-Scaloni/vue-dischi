@@ -5,8 +5,8 @@
     <GenereOption @filtragenere="cambiagenere"/>
   </div>
   <div class="container-cards">
-    <!-- al posto di albums mettere filtragenere -->
-    <MyCard v-for="album in albums" 
+    <!-- al posto di albums mettere  -->
+    <MyCard v-for="album in generefiltrato" 
     :key="album.id"
     :details="album" 
     />
@@ -47,8 +47,12 @@ export default {
       )}
     },
     computed: {
-        filtragenere(){
-       return
+      generefiltrato(){
+      if (this.filtragenere === "") {
+        return this.selezionato
+      } else {
+          return GenereOption.includes(this.selezionato)
+      }
     }
     }
   }
