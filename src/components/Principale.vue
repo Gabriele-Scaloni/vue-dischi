@@ -2,9 +2,10 @@
 
 <div class="container">
   <div id="navbar"> <img id="logonav" src="https://www.logolynx.com/images/logolynx/51/51b63b09d988d4545d7e6db63cdb8cd8.png" alt="Logo spotify">
-    <GenereOption/>
+    <GenereOption @filtragenere="cambiagenere"/>
   </div>
   <div class="container-cards">
+    <!-- al posto di albums mettere filtragenere -->
     <MyCard v-for="album in albums" 
     :key="album.id"
     :details="album" 
@@ -44,6 +45,11 @@ export default {
         this.albums = result.data.response;
       }
       )}
+    },
+    computed: {
+        filtragenere(){
+       return
+    }
     }
   }
 
