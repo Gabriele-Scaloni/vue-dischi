@@ -2,9 +2,10 @@
 
 <div class="container">
   <div id="navbar"> <img id="logonav" src="https://www.logolynx.com/images/logolynx/51/51b63b09d988d4545d7e6db63cdb8cd8.png" alt="Logo spotify">
-   </div>
+    <GenereOption/>
+  </div>
   <div class="container-cards">
-    <MyCards v-for="album in albums" 
+    <MyCard v-for="album in albums" 
     :key="album.id"
     :details="album" 
     />
@@ -16,13 +17,15 @@
 //importo axios e lo installo del terminale, prima uscendo dal progetto
 import axios from 'axios';
 //importo qui MyCards (component figlio di questo componente)
-import MyCards from '@/components/MyCards.vue'
+import MyCard from '@/components/MyCard.vue'
+import GenereOption from '@/components/GenereOption.vue'
 
 
 export default {
   name: 'Principale',
   components: {
-    MyCards
+    MyCard,
+    GenereOption
   },
   data() {
     return {//inserire in apiUrl l'url dell'array
@@ -31,10 +34,10 @@ export default {
     }
   },
   created() {
-    this.getMyCards();
+    this.getMyCard();
   },
     methods :{
-      getMyCards(){
+      getMyCard(){
        axios
       .get(this.apiUrl)
       .then((result) => {
@@ -52,6 +55,7 @@ export default {
   width:100%;
   height: 60px;
   background-color:#2e3a46;
+  display: flex;
 }
 #navbar:after {
   content: "";
