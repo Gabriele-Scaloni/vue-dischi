@@ -2,10 +2,10 @@
 
 <div class="container">
   <div id="navbar"> <img id="logonav" src="https://www.logolynx.com/images/logolynx/51/51b63b09d988d4545d7e6db63cdb8cd8.png" alt="Logo spotify">
-    <GenereOption @filtragenere="cambiagenere"/>
+    <GenereOption @cambiagenere="filtragenere"/>
   </div>
   <div class="container-cards">
-    <!-- al posto di albums mettere  -->
+    <!-- al posto di albums mettere generefiltrato-->
     <MyCard v-for="album in generefiltrato" 
     :key="album.id"
     :details="album" 
@@ -32,27 +32,35 @@ export default {
     return {//inserire in apiUrl l'url dell'array
       apiUrl :"https://flynn.boolean.careers/exercises/api/array/music",
       albums: [],
+      selezionato: ""
     }
   },
   created() {
     this.getMyCard();
   },
-    methods :{
+    methods: {
       getMyCard(){
-       axios
-      .get(this.apiUrl)
-      .then((result) => {
-        this.albums = result.data.response;
+        axios.get(this.apiUrl).then((result) => {
+          this.albums = result.data.response;
+        })
+      },
+      filtragenere(genere) {
+        this.selezionato = genere;
       }
-      )}
     },
     computed: {
       generefiltrato(){
-      if (this.filtragenere === "") {
-        return this.selezionato
-      } else {
-          return GenereOption.includes(this.selezionato)
+      if (this.selezionato === "") {
+        return this.albums
       }
+
+      let tutti = this.albums;
+      let filtro = this.selezionato;
+
+      tutti =  tutti.filter((elem) => {
+        return elem.genre == filtro;
+      })
+      return tutti;
     }
     }
   }

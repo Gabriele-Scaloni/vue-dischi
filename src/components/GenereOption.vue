@@ -4,11 +4,11 @@
         <span id="scelta"> Scegli il tuo genere  </span>
         <select @change="$emit('cambiagenere', selezionato)"
             v-model="selezionato">
-            <option :value="all">all</option>
-            <option :value="rock">rock</option>
-            <option :value="pop">pop</option>
-            <option :value="jazz">jazz</option>
-            <option :value="metal">metal</option>
+            <option value="All">All</option>
+            <option value="Rock">rock</option>
+            <option value="Pop">pop</option>
+            <option value="Jazz">jazz</option>
+            <option value="Metal">metal</option>
         </select>
     </div>
 </template>
@@ -18,11 +18,9 @@ export default {
   name: 'GenereOption',
   data () {
       return {
-        selezionato :Array,
+        selezionato: "",
       }
-
     }, 
-   
 }
 </script>
 
