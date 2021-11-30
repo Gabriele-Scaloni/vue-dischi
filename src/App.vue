@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    
-    <Principale/>
+
+  <GenereOption  @cambiagenere="filtragenere"/>
+
+  <Principale :genereSelezionato="selezionato" />
 
   </div>
 </template>
@@ -10,10 +12,24 @@
 
 import Principale from '@/components/Principale.vue'
 
+import GenereOption from '@/components/GenereOption.vue'
+
+
 export default {
   name: 'App',
   components: {
+    GenereOption,
     Principale,
+  },
+  data() {
+    return {
+      selezionato: "All"
+    };
+  },
+  methods: {
+  filtragenere(genere) {
+        this.selezionato = genere;
+      }
   }
 }
 </script>
