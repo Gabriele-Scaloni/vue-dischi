@@ -3,6 +3,8 @@
 <div class="container">
   <div id="navbar"> <img id="logonav" src="https://www.logolynx.com/images/logolynx/51/51b63b09d988d4545d7e6db63cdb8cd8.png" alt="Logo spotify">
     <GenereOption @cambiagenere="filtragenere"/>
+    <!-- importo cambiagenere dal componente figlio e gli assegno 
+    filstragenere per riutilizzarlo nel componente padre -->
   </div>
   <div class="container-cards">
     <!-- al posto di albums mettere generefiltrato-->
@@ -50,7 +52,9 @@ export default {
     },
     computed: {
       generefiltrato(){
-      if (this.selezionato === "") {
+      if (this.selezionato === "All") {
+        return this.albums
+      } else if (this.selezionato === "") {
         return this.albums
       }
 
