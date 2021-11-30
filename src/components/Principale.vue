@@ -52,7 +52,7 @@ export default {
     },
     computed: {
       generefiltrato(){
-      if (this.selezionato === "All") {
+      if (this.selezionato === "All" ) {
         return this.albums
       } else if (this.selezionato === "") {
         return this.albums

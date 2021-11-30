@@ -1,7 +1,8 @@
 <template>
-
     <div class="container-selezione">
         <span id="scelta"> Scegli il tuo genere  </span>
+        <!-- con emit invio cose dal "figlio" al "genitore", con le props 
+        il contrario -->
         <select @change="$emit('cambiagenere', selezionato)"
             v-model="selezionato">
             <option value="All">All</option>
